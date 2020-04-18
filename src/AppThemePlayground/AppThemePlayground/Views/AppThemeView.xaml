@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppThemePlayground.Views.AppThemeView"
+             Title="AppTheme Playground">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <AppThemeColor x:Key="ThemeColor" Light="DarkRed" Dark="LightPink" />
+
+            <Style x:Key="OSThemeStyle" TargetType="Label" >
+                <Setter Property="TextColor" Value="{OnAppTheme Black, Light=DarkRed, Dark=LightPink}" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout
+            Padding="12">
+            <Label 
+                Text="AppTheme Color"
+                TextColor="{DynamicResource ThemeColor}"/>
+            <Label 
+                Text="Using Style"
+                Style="{DynamicResource OSThemeStyle}"/>
+            <Label Text="Inline">
+                <Label.TextColor>
+                    <OnAppTheme x:TypeArguments="Color" Light="DarkRed" Dark="LightPink" />
+                </Label.TextColor>
+            </Label>
+            <Label
+                x:Name="ThemeLabel"
+                FontSize="Large">
+                <Label.Text>
+                    <OnAppTheme x:TypeArguments="x:String" Light="Light" Dark="Dark" />
+                </Label.Text>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
